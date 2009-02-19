@@ -1,0 +1,22 @@
+ParamsRequired
+=============
+
+params_required adds a before_filter which tests if certain params are set. Otherwise HTTP status 404 will be rendered. 
+
+Example
+=======
+
+params_required( [array] required params, [hash] before_filter options)
+
+class PostsController < ApplicationController
+
+  # tests if params[:blog_id] and params[:user_id] are present
+  params_required :blog_id, :user_id, :except => [:show]
+  
+  # tests if params[:user][:blog_id] is present
+  params_required :user => :blog_id
+  
+end
+
+
+Copyright (c) 2008 [Michael Bumann], released under the MIT license
